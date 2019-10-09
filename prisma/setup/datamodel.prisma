@@ -1,0 +1,44 @@
+type User {
+    id: ID! @id
+    firstName: String!
+    lastName: String!
+    age: Int
+    email: String
+    password: String
+    posts: [Post]
+    comments: [Comment]
+    likes: [Like]
+    friendWith: [User] @relation(name:"FriendShip", link: TABLE)
+    friendOf: [User] @relation(name:"FriendShip")
+    groups: [Group]
+}
+
+type Post {
+    id: ID! @id
+    content: String
+    author: User
+    comments: [Comment]
+    likes: [Like]
+}
+
+type Comment {
+    id: ID! @id
+    content: String
+    author: User
+    post: Post
+    likes: [Like]
+}
+
+type Like {
+    id: ID! @id
+    user: User
+    post: Post
+    comment: Comment
+}
+
+type Group {
+    id: ID! @id
+    topic: String!
+    description: String
+    members: [User]
+}

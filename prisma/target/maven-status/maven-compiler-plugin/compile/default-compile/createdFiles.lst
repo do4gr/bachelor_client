@@ -1,0 +1,4 @@
+com/yahoo/ycsb/webservice/prisma/social/PrismaClient$Criteria.class
+com/yahoo/ycsb/webservice/prisma/social/PrismaClient.class
+com/yahoo/ycsb/webservice/prisma/social/PrismaClient$TimeoutException.class
+com/yahoo/ycsb/webservice/prisma/social/PrismaClient$Timer.class

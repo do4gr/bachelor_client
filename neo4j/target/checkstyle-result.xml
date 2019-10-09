@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.2">
+<file name="/Users/matthias/bachelor_toolkit/neo4j/src/main/java/com/yahoo/ycsb/webservice/neo4j/social/Neo4jClient.java">
+</file>
+<file name="/Users/matthias/bachelor_toolkit/neo4j/src/main/java/com/yahoo/ycsb/webservice/neo4j/social/package-info.java">
+</file>
+</checkstyle>

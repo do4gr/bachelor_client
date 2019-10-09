@@ -1,0 +1,4 @@
+com/yahoo/ycsb/webservice/neo4j/social/Neo4jClient$TimeoutException.class
+com/yahoo/ycsb/webservice/neo4j/social/Neo4jClient.class
+com/yahoo/ycsb/webservice/neo4j/social/Neo4jClient$Criteria.class
+com/yahoo/ycsb/webservice/neo4j/social/Neo4jClient$Timer.class

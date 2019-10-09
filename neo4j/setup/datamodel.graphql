@@ -1,0 +1,44 @@
+type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    age: Int
+    email: String
+    password: String
+    posts: [Post] @relation(name:"UserToPost", direction: IN)
+    comments: [Comment] @relation(name:"UserToComment", direction: IN)
+    likes: [Like] @relation(name:"UserToLike", direction: IN)
+    friendWith: [User] @relation(name:"FriendShip", direction: IN)
+    friendOf: [User] @relation(name:"FriendShip")
+    groups: [Group] @relation(name:"UserToGroup", direction: IN)
+}
+
+type Post {
+    id: ID!
+    content: String
+    author: User @relation(name:"UserToPost")
+    comments: [Comment] @relation(name:"PostToComment", direction: IN)
+    likes: [Like] @relation(name:"PostToLike", direction: IN)
+}
+
+type Comment {
+    id: ID!
+    content: String
+    author: User @relation(name:"UserToComment")
+    post: Post @relation(name:"PostToComment")
+    likes: [Like] @relation(name:"CommentToLike", direction: IN)
+}
+
+type Like {
+    id: ID!
+    user: User @relation(name:"UserToLike")
+    post: Post @relation(name:"PostToLike")
+    comment: Comment @relation(name:"CommentToLike")
+}
+
+type Group {
+    id: ID!
+    topic: String!
+    description: String
+    members: [User] @relation(name:"UserToGroup")
+}

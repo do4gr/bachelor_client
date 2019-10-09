@@ -1,0 +1,57 @@
+# Core
+exporter=com.yahoo.ycsb.measurements.exporter.TextMeasurementsExporter
+threadcount=1
+log.enable=true
+
+# Measurement Properties
+measurementtype=hdrhistogram
+hdrhistogram.percentiles=50,90,95,99
+histogram.buckets=1
+
+# Workload Package Properties
+workload=com.yahoo.ycsb.workloads.GraphQLSocialWorkload
+timeout.con=60
+timeout.read=60
+timeout.exec=60
+
+# Load Phase Properties
+insertorder=ordered
+models=[user,post,comment,like,group]
+relations=[friendship]
+count.user=1000
+count.post=1000
+count.comment=1000
+count.like=1000
+count.group=1000
+count.friendship=1000
+
+# Transaction Phase Properties
+insertproportion=0
+insert.queries=[createSingleUser_user,createAndConnectSingleLike_like,createAndConnectSingleComment_comment]
+insert.createSingleUser.proportion=0.1
+insert.createAndConnectSingleLike.proportion=0.3
+insert.createAndConnectSingleComment.proportion=0.6
+
+readproportion=1
+read.queries=[userByIdWithPostsAndCommentsAndAuthors_user,groupByIdWithMemberIds_group,postByIdWithFirstTenComments_post]
+read.userByIdWithPostsAndCommentsAndAuthors.proportion=1
+read.groupByIdWithMemberIds.proportion=0
+read.postByIdWithFirstTenComments.proportion=0
+
+updateproportion=0
+update.queries=[updateUserByIdSetFriendWith_user,updatePostByIdSetContent_post,updateCommentByIdSetContent_comment]
+update.updateUserByIdSetFriendWith.proportion=0.1
+update.updatePostByIdSetContent.proportion=0.3
+update.updateCommentByIdSetContent.proportion=0.6
+
+# Header
+requestdistribution=uniform
+operationcount=10000
+maxexecutiontime=10000
+
+# System Specific Properties
+db=com.yahoo.ycsb.webservice.prisma.social.PrismaClient
+http.endpoint=http://78.46.185.231:4466/
+#db=com.yahoo.ycsb.webservice.neo4j.social.Neo4jClient
+#http.endpoint=http://78.46.133.137:7474/graphql/
+headers=Content-Type application/json
